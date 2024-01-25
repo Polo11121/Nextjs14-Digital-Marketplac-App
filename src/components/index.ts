@@ -1,10 +1,13 @@
 export * from "@/components/Button";
 export { Cart } from "@/components/Cart";
 export { Icons } from "@/components/Icons";
+export * from "@/components/Input";
+export * from "@/components/Label";
 export { MaxWidthWrapper } from "@/components/MaxWidthWrapper";
 export { Navbar } from "@/components/Navbar";
 export { NavItem } from "@/components/NavItem";
 export { NavItems } from "@/components/NavItems";
+export { Providers } from "@/components/Providers";
 export { Perk } from "@/components/Perk";
 export { Separator } from "@/components/Separator";
 export * from "@/components/Sheet";

@@ -53,7 +53,7 @@ export const NavItem = ({ category, isAnyOpen, isOpen, onOpen }: Props) => {
                   {category.featured.map(({ href, imageSrc, name }) => (
                     <div
                       key={name}
-                      className="group relative text-base sm:text-sm"
+                      className="group relative text-base sm:text-sm hover:cursor-pointer"
                     >
                       <div className="relative aspect-video overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
                         <Image

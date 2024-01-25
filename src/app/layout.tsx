@@ -2,8 +2,8 @@ import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { Navbar, Providers } from "@/components";
 import "@/app/globals.css";
-import { Navbar } from "@/components";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,8 +22,10 @@ const RootLayout = ({ children }: Props) => (
       className={cn("relative h-full font-sans antialiased", inter.className)}
     >
       <main className="relative flex flex-col m-h-screen">
-        <Navbar />
-        <div className="flex-grow flex-1">{children}</div>
+        <Providers>
+          <Navbar />
+          <div className="flex-grow flex-1">{children}</div>
+        </Providers>
       </main>
     </body>
   </html>
