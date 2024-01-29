@@ -5,10 +5,13 @@ import {
   buttonVariants,
   Cart,
 } from "@/components";
+import { getServerSideUser } from "@/lib/paylaodUtils";
+import { cookies } from "next/headers";
 import Link from "next/link";
 
-export const Navbar = () => {
-  const user = null;
+export const Navbar = async () => {
+  const nextCookies = cookies();
+  const { user } = await getServerSideUser(nextCookies);
 
   return (
     <div className="bg-white sticky z-50 top-0 inset-x-0 h-16">

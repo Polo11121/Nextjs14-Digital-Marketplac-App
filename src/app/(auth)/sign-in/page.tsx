@@ -9,10 +9,11 @@ import {
   AuthCredentials,
   authCredentialsValidator,
 } from "@/lib/validators/authCredentialsValidator";
-import { useSignUp } from "@/hooks";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useSignIn } from "@/hooks";
 import Link from "next/link";
 
-const SignUpPage = () => {
+const SignInPage = () => {
   const {
     register,
     handleSubmit,
@@ -20,10 +21,18 @@ const SignUpPage = () => {
   } = useForm<AuthCredentials>({
     resolver: zodResolver(authCredentialsValidator),
   });
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-  const { mutate, isLoading } = useSignUp();
+  const isSeller = searchParams.get("as") === "seller";
+
+  const { mutate, isLoading } = useSignIn();
 
   const submitHandler = handleSubmit((data) => mutate(data));
+
+  const continueAsCustomerHandler = () => router.replace("/sign-in");
+
+  const continueAsSellerHandler = () => router.replace("/sign-in?as=seller");
 
   return (
     <>
@@ -31,15 +40,17 @@ const SignUpPage = () => {
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col items-center space-y-2 text-center">
             <Icons.logo className="h-20 w-20" />
-            <h1 className="text-2xl font-bold">Create and account</h1>
+            <h1 className="text-2xl font-bold">
+              Sing in to your {isSeller ? "seller" : ""} account
+            </h1>
             <Link
-              href="/sign-in"
+              href="/sign-up"
               className={buttonVariants({
                 variant: "link",
                 className: "gap-1.5",
               })}
             >
-              Already have an account? Sign in
+              Don&apos;t have an account? Sign up
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -80,10 +91,40 @@ const SignUpPage = () => {
                   )}
                 </div>
                 <Button disabled={isLoading} type="submit">
-                  Sign Up
+                  Sign In
                 </Button>
               </div>
             </form>
+            <div className="relative">
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 flex items-center"
+              >
+                <span className="w-full border-t" />
+              </div>
+              <div className="relative flex justify-center text-xs uppercase">
+                <span className="bg-background px-2 text-muted-foreground">
+                  or
+                </span>
+              </div>
+            </div>
+            {isSeller ? (
+              <Button
+                onClick={continueAsCustomerHandler}
+                variant="secondary"
+                disabled={isLoading}
+              >
+                Continue as a customer
+              </Button>
+            ) : (
+              <Button
+                onClick={continueAsSellerHandler}
+                variant="secondary"
+                disabled={isLoading}
+              >
+                Continue as a seller
+              </Button>
+            )}
           </div>
         </div>
       </div>
@@ -91,4 +132,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default SignInPage;
