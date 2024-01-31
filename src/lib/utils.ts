@@ -1,5 +1,8 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { Access } from "payload/config";
+
+export const isAdmin: Access = ({ req }) => req.user?.role === "admin";
 
 export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 

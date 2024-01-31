@@ -41,7 +41,7 @@ const SignInPage = () => {
           <div className="flex flex-col items-center space-y-2 text-center">
             <Icons.logo className="h-20 w-20" />
             <h1 className="text-2xl font-bold">
-              Sing in to your {isSeller ? "seller" : ""} account
+              Sign in to your {isSeller ? "seller" : ""} account
             </h1>
             <Link
               href="/sign-up"

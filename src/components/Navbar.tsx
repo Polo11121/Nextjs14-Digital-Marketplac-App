@@ -1,12 +1,9 @@
-import {
-  Icons,
-  MaxWidthWrapper,
-  NavItems,
-  buttonVariants,
-  Cart,
-} from "@/components";
+import { Icons, MaxWidthWrapper, buttonVariants } from "@/components";
+import { NavItems } from "@/components/NavItems";
+import { Cart } from "@/components/Cart";
 import { getServerSideUser } from "@/lib/paylaodUtils";
 import { cookies } from "next/headers";
+import { UserAccountNav } from "@/components/UserAccountNav";
 import Link from "next/link";
 
 export const Navbar = async () => {
@@ -29,7 +26,21 @@ export const Navbar = async () => {
               </div>
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  {!user ? (
+                  {user ? (
+                    <>
+                      <UserAccountNav user={user} />
+                      <span
+                        className="h-6 w-px bg-gray-200"
+                        aria-hidden="true"
+                      />
+                      <div className="flex lg:ml-6">
+                        <span
+                          className="h-6 w-px bg-gray-200"
+                          aria-hidden="true"
+                        />
+                      </div>
+                    </>
+                  ) : (
                     <>
                       <Link
                         href="/sign-in"
@@ -51,19 +62,6 @@ export const Navbar = async () => {
                       >
                         Create account
                       </Link>
-                      <div className="flex lg:ml-6">
-                        <span
-                          className="h-6 w-px bg-gray-200"
-                          aria-hidden="true"
-                        />
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <span
-                        className="h-6 w-px bg-gray-200"
-                        aria-hidden="true"
-                      />
                       <div className="flex lg:ml-6">
                         <span
                           className="h-6 w-px bg-gray-200"

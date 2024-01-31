@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { PRODUCT_CATEGORIES } from "@/config";
-import { NavItem } from "@/components";
+import { NavItem } from "@/components/NavItem";
 import { useOnClickOutside } from "@/hooks";
 
 export const NavItems = () => {

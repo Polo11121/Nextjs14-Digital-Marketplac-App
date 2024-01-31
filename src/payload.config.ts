@@ -3,11 +3,15 @@ import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { slateEditor } from "@payloadcms/richtext-slate";
 import { webpackBundler } from "@payloadcms/bundler-webpack";
 import { Users } from "./collections/Users";
+import { Products } from "./collections/Products/Products";
+import { Media } from "./collections/Products/Media";
+import { ProductFiles } from "./collections/Products/ProductFiles";
+import { Orders } from "./collections/Products/Orders";
 import path from "path";
 
 export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || "",
-  collections: [Users],
+  collections: [Users, Products, Media, ProductFiles, Orders],
   routes: {
     admin: "/sell",
   },
@@ -15,7 +19,7 @@ export default buildConfig({
     user: "users",
     bundler: webpackBundler(),
     meta: {
-      titleSuffix: " - Digital Hipo",
+      titleSuffix: " - Digital Hippo",
       favicon: "/favicon.ico",
       ogImage: "/thumbnail.png",
     },

@@ -15,9 +15,13 @@ dontenv.config({
 const transporter = nodemailer.createTransport({
   host: "smtp.resend.com",
   port: 465,
+  secure: true,
   auth: {
     user: "resend",
     pass: process.env.RESEND_API_KEY,
+  },
+  tls: {
+    rejectUnauthorized: false,
   },
 });
 
@@ -47,7 +51,7 @@ export const getPayloadClient = async ({
       email: {
         transport: transporter,
         fromAddress: "onboarding@resend.dev",
-        fromName: "Digital Hipo",
+        fromName: "Digital Hippo",
       },
       local: initOptions?.express ? false : true,
       ...initOptions,

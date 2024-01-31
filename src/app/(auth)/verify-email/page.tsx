@@ -1,4 +1,4 @@
-import { VerifyEmail } from "@/components";
+import { VerifyEmail } from "@/components/VerifyEmail";
 import Image from "next/image";
 
 type Props = {
