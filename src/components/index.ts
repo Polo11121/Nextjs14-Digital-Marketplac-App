@@ -4,5 +4,7 @@ export * from "@/components/Input";
 export * from "@/components/Label";
 export { MaxWidthWrapper } from "@/components/MaxWidthWrapper";
 export { Perk } from "@/components/Perk";
+export { ProductPlaceholder } from "@/components/ProductPlaceholder";
 export { Separator } from "@/components/Separator";
+export { Skeleton } from "@/components/Skeleton";
 export * from "@/components/Sheet";
