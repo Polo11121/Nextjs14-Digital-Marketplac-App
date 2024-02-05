@@ -2,9 +2,8 @@ import { MaxWidthWrapper } from "@/components";
 import { AddToCartButton } from "@/components/AddToCartButton";
 import { ProductReel } from "@/components/ProductReel";
 import { Slider } from "@/components/Slider";
-import { PRODUCT_CATEGORIES } from "@/config";
 import { getPayloadClient } from "@/getPaylaod";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice, getProductLabel } from "@/lib/utils";
 import { CheckIcon, Shield } from "lucide-react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -50,9 +49,7 @@ export const ProductDetailsPage = async ({ params: { productId } }: Props) => {
     return notFound();
   }
 
-  const label = PRODUCT_CATEGORIES.find(
-    ({ value }) => value === product.category
-  )?.label;
+  const label = getProductLabel(product);
 
   const validUrls = product.images
     .map(({ image }) => (typeof image === "string" ? image : image.url))
@@ -117,7 +114,7 @@ export const ProductDetailsPage = async ({ params: { productId } }: Props) => {
               </div>
             </section>
           </div>
-          <div className="mt-10 lg:col-start-2 lg:row-start-2 lg:mt-0 lg:self-center">
+          <div className="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
             <div className="aspect-square rounded-lg">
               <Slider urls={validUrls} />
             </div>
@@ -125,7 +122,7 @@ export const ProductDetailsPage = async ({ params: { productId } }: Props) => {
           <div className="mt-10 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">
             <div>
               <div className="mt-10">
-                <AddToCartButton />
+                <AddToCartButton product={product} />
               </div>
             </div>
             <div className="mt-6 text-center">

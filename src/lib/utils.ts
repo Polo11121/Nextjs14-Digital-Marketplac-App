@@ -1,6 +1,8 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { Access } from "payload/config";
+import { PRODUCT_CATEGORIES } from "@/config";
+import { Product } from "@/payloadTypes";
 
 export const isAdmin: Access = ({ req }) => req.user?.role === "admin";
 
@@ -24,3 +26,6 @@ export const formatPrice = (
     maximumFractionDigits: 2,
   }).format(numericPrice);
 };
+
+export const getProductLabel = (product: Product) =>
+  PRODUCT_CATEGORIES.find(({ value }) => value === product.category)?.label;

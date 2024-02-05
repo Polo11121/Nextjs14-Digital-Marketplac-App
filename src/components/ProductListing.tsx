@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 import { ProductPlaceholder } from "@/components";
 import { Slider } from "@/components/Slider";
-import { PRODUCT_CATEGORIES } from "@/config";
-import { cn, formatPrice } from "@/lib/utils";
+import { cn, formatPrice, getProductLabel } from "@/lib/utils";
 import { Product } from "@/payloadTypes";
 import Link from "next/link";
 
@@ -28,9 +27,7 @@ export const ProductListing = ({ product, index }: Props) => {
     return <ProductPlaceholder />;
   }
 
-  const label = PRODUCT_CATEGORIES.find(
-    ({ value }) => value === product.category
-  )?.label;
+  const label = getProductLabel(product);
 
   const validUrls = product.images
     .map(({ image }) => (typeof image === "string" ? image : image.url))
