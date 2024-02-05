@@ -33,12 +33,6 @@ export const Navbar = async () => {
                         className="h-6 w-px bg-gray-200"
                         aria-hidden="true"
                       />
-                      <div className="flex lg:ml-6">
-                        <span
-                          className="h-6 w-px bg-gray-200"
-                          aria-hidden="true"
-                        />
-                      </div>
                     </>
                   ) : (
                     <>

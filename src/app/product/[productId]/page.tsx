@@ -27,7 +27,7 @@ const BREADCRUMBS = [
   },
 ];
 
-export const ProductDetailsPage = async ({ params: { productId } }: Props) => {
+const ProductDetailsPage = async ({ params: { productId } }: Props) => {
   const payload = await getPayloadClient();
 
   const { docs: products } = await payload.find({
@@ -148,3 +148,5 @@ export const ProductDetailsPage = async ({ params: { productId } }: Props) => {
     </MaxWidthWrapper>
   );
 };
+
+export default ProductDetailsPage;

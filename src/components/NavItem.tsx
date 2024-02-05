@@ -1,6 +1,6 @@
 "use client";
 
-import { PRODUCT_CATEGORIES } from "@/config";
+import { PRODUCT_CATEGORIES } from "../config";
 import { Button } from "@/components";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";

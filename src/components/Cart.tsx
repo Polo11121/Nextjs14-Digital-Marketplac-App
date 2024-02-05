@@ -13,7 +13,7 @@ import {
   ScrollArea,
 } from "@/components";
 import { useCart } from "@/hooks";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice, getProductsTotal } from "@/lib/utils";
 import { ShoppingCart } from "lucide-react";
 import { CartItem } from "@/components/CartItem";
 
@@ -29,7 +29,7 @@ export const Cart = () => {
   }, []);
 
   const fee = 1;
-  const cartTotal = items.reduce((acc, item) => acc + item.product.price, fee);
+  const cartTotal = getProductsTotal(items);
   const itemCount = items.length;
 
   return (
@@ -46,7 +46,7 @@ export const Cart = () => {
         </SheetTrigger>
         <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg">
           <SheetHeader className="space-y-2.5 pr-6">
-            <SheetTitle>Cart (0)</SheetTitle>
+            <SheetTitle>Cart ({itemCount})</SheetTitle>
           </SheetHeader>
           {itemCount ? (
             <>
@@ -70,7 +70,7 @@ export const Cart = () => {
                   </div>
                   <div className="flex">
                     <span className="flex-1">Total</span>
-                    <span>{formatPrice(cartTotal)}</span>
+                    <span>{formatPrice(cartTotal + fee)}</span>
                   </div>
                 </div>
                 <SheetFooter>

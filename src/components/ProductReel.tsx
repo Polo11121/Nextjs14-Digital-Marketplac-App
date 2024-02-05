@@ -68,7 +68,7 @@ export const ProductReel = (props: Props) => {
               <ProductListing
                 product={product}
                 index={index}
-                key={product?.id}
+                key={product?.id ?? index}
               />
             ))}
           </div>

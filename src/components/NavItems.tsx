@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { PRODUCT_CATEGORIES } from "@/config";
+import { PRODUCT_CATEGORIES } from "../config";
 import { NavItem } from "@/components/NavItem";
 import { useOnClickOutside } from "@/hooks";
 
